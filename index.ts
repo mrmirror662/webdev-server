@@ -1,0 +1,15 @@
+import express from "express";
+import cors from "cors";
+import Hello from "./Hello";
+import Lab5 from "./Lab5/index";
+import db from "./Kambaz/Database";
+import CourseRoutes from "./Kambaz/Courses/routes";
+import ModuleRoutes from "./Kambaz/Modules/routes";
+const app = express();
+app.use(cors());
+app.use(express.json());
+CourseRoutes(app, db);
+ModuleRoutes(app, db);
+Lab5(app);
+Hello(app);
+app.listen(process.env.PORT || 4000);
